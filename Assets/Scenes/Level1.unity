@@ -522,6 +522,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 814276395, guid: caf144957f7de434fad808f92877173a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 814276395, guid: caf144957f7de434fad808f92877173a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1124211988811603993, guid: caf144957f7de434fad808f92877173a,
         type: 3}
       propertyPath: m_RootOrder
@@ -581,6 +589,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FPPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679917696315958690, guid: caf144957f7de434fad808f92877173a,
+        type: 3}
+      propertyPath: maxXRotation
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679917696315958690, guid: caf144957f7de434fad808f92877173a,
+        type: 3}
+      propertyPath: minXRotation
+      value: -55
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caf144957f7de434fad808f92877173a, type: 3}

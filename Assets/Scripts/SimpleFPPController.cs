@@ -11,7 +11,7 @@ public class SimpleFPPController : MonoBehaviour
     private float speed = 4f;
     [Header("Constraints")]
     [SerializeField]
-    private float minXRotation = -20;
+    private float minXRotation = -30;
     [SerializeField]
     private float maxXRotation = 15;
     [Header("References")]
@@ -29,6 +29,11 @@ public class SimpleFPPController : MonoBehaviour
 
     private void Awake()
     {
+#if UNITY_EDITOR
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+#endif
+
         lookAction.action.actionMap.Enable();
         lookAction.action.performed += Look;
     }
@@ -40,14 +45,17 @@ public class SimpleFPPController : MonoBehaviour
 
     private void Move(Vector2 input)
     {
-        charControl.SimpleMove(new Vector3(input.x, 0, input.y) * speed);
+        var movex = charControl.transform.forward * input.y;
+        var movez = charControl.transform.right * input.x;
+        charControl.SimpleMove((movex + movez) * speed);
     }
 
     public void RotateCamera(Vector2 input)
     {
         input *= 0.1f;
-        cam.transform.Rotate(-input.y, input.x, 0, Space.Self);
-        var currentRot = cam.transform.localRotation;
+        cam.transform.Rotate(-input.y, 0, 0, Space.Self);
+        charControl.transform.Rotate(0, input.x, 0, Space.Self);
+        var currentRot = cam.transform.rotation;
         var xRot = currentRot.eulerAngles.x;
         if (xRot > 180)
         {
