@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 640979215}
   - component: {fileID: 640979214}
   - component: {fileID: 640979213}
+  - component: {fileID: 640979218}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -329,6 +330,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -14.166, y: -21.871, z: -31.37}
+--- !u!114 &640979218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640979212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f7cb029ef83e34c905ac79315ac541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensityReduction: 0.1
+  taintDistanceInterval: 100
+  taintObject: {fileID: -3470708788446982367, guid: cfc7596704bbd7f489156fcd4c05c7e9,
+    type: 3}
 --- !u!1 &661517564
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +359,7 @@ GameObject:
   - component: {fileID: 661517566}
   - component: {fileID: 661517565}
   - component: {fileID: 661517569}
+  - component: {fileID: 661517570}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -382,8 +400,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d92ef32394b5f474385d74b565a7bdd7, type: 2}
-  - {fileID: 2100000, guid: 027cb3d3d7dc79d41ad763e01759de07, type: 2}
-  - {fileID: 2100000, guid: a0427cf339e5891468d5f2b433b2d44a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -443,6 +459,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &661517570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661517564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f7cb029ef83e34c905ac79315ac541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensityReduction: 0.1
+  taintDistanceInterval: 100
+  taintObject: {fileID: 0}
 --- !u!1001 &1295848095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -806,11 +837,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FPPlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 4350647970039210040, guid: caf144957f7de434fad808f92877173a,
-        type: 3}
-      propertyPath: strength
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caf144957f7de434fad808f92877173a, type: 3}

@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 6679917696315958690}
   - component: {fileID: 8362188429822070400}
   - component: {fileID: 4350647970039210040}
+  - component: {fileID: 831826067}
   m_Layer: 0
   m_Name: FPPlayer
   m_TagString: Untagged
@@ -244,6 +245,22 @@ MonoBehaviour:
   moveGrabbedAction: {fileID: -7884442416624635744, guid: 9c4494e06071f8346a040cd84b3dd95e,
     type: 3}
   highlighter: {fileID: 8362188429822070400}
+--- !u!114 &831826067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124211988811603999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f7cb029ef83e34c905ac79315ac541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensityReduction: 0.1
+  taintDistanceInterval: 100
+  taintObject: {fileID: -7354197880236856703, guid: 358b75ea5451cf143ab19029a189097d,
+    type: 3}
 --- !u!1 &2367735895255394460
 GameObject:
   m_ObjectHideFlags: 0
