@@ -77,4 +77,14 @@ public class SimpleFPPController : MonoBehaviour
                 break;
         }
     }
+
+#if UNITY_EDITOR
+    [SerializeField]
+    private float distance = 5f;
+
+    private void OnDrawGizmos()
+    {
+        Debug.DrawLine(cam.transform.position, transform.forward * distance + transform.position, Color.red);
+    }
+#endif
 }

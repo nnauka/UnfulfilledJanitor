@@ -16,7 +16,9 @@ public class PBGrabber : MonoBehaviour
     private ObjectHighlighter highlighter;
 
     private Rigidbody grabbedRb;
-    private Vector3 initialDistance;
+    private float initialDistance;
+
+    private Vector3 force;
 
     private void Awake()
     {
@@ -27,10 +29,9 @@ public class PBGrabber : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var distanceFromObject = ((transform.position - grabbedRb.transform.position) - initialDistance) * strength;
-        Vector3 force = (Vector3)(transform.forward * (-moveGrabbedAction.action.ReadValue<Vector2>() * strength)) + distanceFromObject;
-        Debug.LogError($"Force: {force}");
-        grabbedRb.AddForce(force);
+        //Vector3 force = grabbedRb.position - (Vector3.Scale(transform.forward, initialDistance)) * strength;
+        Vector3 force = transform.forward * initialDistance + transform.position - grabbedRb.position;
+        grabbedRb.AddForce(force * strength);
     }
 
     private void ProcessGrabbing(InputAction.CallbackContext context)
@@ -64,7 +65,7 @@ public class PBGrabber : MonoBehaviour
         if (highlighter.HighlightedObject != null && highlighter.HighlightedObject.TryGetComponent(out Rigidbody rb))
         {
             enabled = true;
-            initialDistance = transform.position - rb.transform.position;
+            initialDistance = Vector3.Distance(transform.position, rb.position);
             grabbedRb = rb;
         }
     }
