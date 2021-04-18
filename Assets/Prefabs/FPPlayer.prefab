@@ -128,6 +128,8 @@ GameObject:
   - component: {fileID: 1124211988811603992}
   - component: {fileID: 8846652950923375093}
   - component: {fileID: 6679917696315958690}
+  - component: {fileID: 8362188429822070400}
+  - component: {fileID: 4350647970039210040}
   m_Layer: 0
   m_Name: FPPlayer
   m_TagString: Untagged
@@ -205,3 +207,38 @@ MonoBehaviour:
     type: 3}
   moveAction: {fileID: 4868777691580669989, guid: 9c4494e06071f8346a040cd84b3dd95e,
     type: 3}
+--- !u!114 &8362188429822070400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124211988811603999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee42580e71138374fa7d8e42307fd149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 10
+  mask:
+    serializedVersion: 2
+    m_Bits: 1
+  cam: {fileID: 814276394}
+--- !u!114 &4350647970039210040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124211988811603999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1709a8f9bfa8de54e8d22ba9ea9fdf39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 5
+  grabAction: {fileID: 1080287763054534470, guid: 9c4494e06071f8346a040cd84b3dd95e,
+    type: 3}
+  moveGrabbedAction: {fileID: -7884442416624635744, guid: 9c4494e06071f8346a040cd84b3dd95e,
+    type: 3}
+  highlighter: {fileID: 8362188429822070400}
