@@ -51,9 +51,9 @@ public class TaintSpreader : MonoBehaviour, ITaintable
         
     }
 
-    protected virtual void LeaveTaint(Vector3 position, Transform taintetObject)
+    protected virtual void LeaveTaint(Vector3 position, Transform taintedObject)
     {
-        var taint = Instantiate(taintObject, position, transform.rotation, taintetObject);
+        var taint = Instantiate(taintObject, position, transform.rotation, taintedObject);
         taint.SetIntensity(taintIntensity);
     }
 }
