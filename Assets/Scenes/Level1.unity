@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intensityReduction: 0.1
-  taintDistanceInterval: 100
+  taintDistanceInterval: 10
   taintObject: {fileID: -3470708788446982367, guid: cfc7596704bbd7f489156fcd4c05c7e9,
     type: 3}
 --- !u!1 &661517564
