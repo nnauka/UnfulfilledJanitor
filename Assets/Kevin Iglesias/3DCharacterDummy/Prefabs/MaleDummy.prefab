@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 4191150058848306700}
   - component: {fileID: 6497838966406096072}
   - component: {fileID: 2101468930984345044}
+  - component: {fileID: 82657486841476982}
   m_Layer: 0
   m_Name: B-upper_arm_R
   m_TagString: Untagged
@@ -230,6 +231,22 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &82657486841476982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367304667414434108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f96ed3063efca848b65cb298bbf6085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bezier: {fileID: 0}
+  maxTrailLength: 0.25
+  basePrefab: {fileID: 385593219045488564, guid: 98b82e7e5df04c9409c2e10dc847014d,
+    type: 3}
 --- !u!1 &367304667414434110
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,6 +259,7 @@ GameObject:
   - component: {fileID: 8822292903369991249}
   - component: {fileID: 4350092927931785138}
   - component: {fileID: 6888522347093026525}
+  - component: {fileID: 5616254811072190665}
   m_Layer: 0
   m_Name: B-upper_arm_L
   m_TagString: Untagged
@@ -340,6 +358,22 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &5616254811072190665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367304667414434110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f96ed3063efca848b65cb298bbf6085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bezier: {fileID: 0}
+  maxTrailLength: 0.25
+  basePrefab: {fileID: 385593219045488564, guid: 98b82e7e5df04c9409c2e10dc847014d,
+    type: 3}
 --- !u!1 &367304667414434176
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +878,7 @@ GameObject:
   - component: {fileID: 5730162955557628057}
   - component: {fileID: 7483703019627554286}
   - component: {fileID: 1948600080098863914}
+  - component: {fileID: 2099114858832046528}
   m_Layer: 0
   m_Name: B-thigh_R
   m_TagString: Untagged
@@ -942,6 +977,22 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &2099114858832046528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367304667414434240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f96ed3063efca848b65cb298bbf6085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bezier: {fileID: 0}
+  maxTrailLength: 0.25
+  basePrefab: {fileID: 385593219045488564, guid: 98b82e7e5df04c9409c2e10dc847014d,
+    type: 3}
 --- !u!1 &367304667414434242
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,6 +1005,7 @@ GameObject:
   - component: {fileID: 4803574987356202860}
   - component: {fileID: 1127699222155392174}
   - component: {fileID: 3600804741442751361}
+  - component: {fileID: 5787909755333876218}
   m_Layer: 0
   m_Name: B-thigh_L
   m_TagString: Untagged
@@ -1052,6 +1104,22 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &5787909755333876218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367304667414434242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f96ed3063efca848b65cb298bbf6085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bezier: {fileID: 0}
+  maxTrailLength: 0.25
+  basePrefab: {fileID: 385593219045488564, guid: 98b82e7e5df04c9409c2e10dc847014d,
+    type: 3}
 --- !u!1 &367304667414434244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,6 +1442,7 @@ GameObject:
   - component: {fileID: 7192757001317106595}
   - component: {fileID: 1078906738671992696}
   - component: {fileID: 404988404566801669}
+  - component: {fileID: 3312955362941757265}
   m_Layer: 0
   m_Name: B-shin_R
   m_TagString: Untagged
@@ -1472,6 +1541,22 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &3312955362941757265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367304667414434264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f96ed3063efca848b65cb298bbf6085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bezier: {fileID: 0}
+  maxTrailLength: 0.25
+  basePrefab: {fileID: 385593219045488564, guid: 98b82e7e5df04c9409c2e10dc847014d,
+    type: 3}
 --- !u!1 &367304667414434266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1484,6 +1569,7 @@ GameObject:
   - component: {fileID: 2523565887678786055}
   - component: {fileID: 1903264619442495769}
   - component: {fileID: 7815028842651755464}
+  - component: {fileID: 6727244959155441464}
   m_Layer: 0
   m_Name: B-shin_L
   m_TagString: Untagged
@@ -1582,6 +1668,22 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &6727244959155441464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367304667414434266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f96ed3063efca848b65cb298bbf6085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bezier: {fileID: 0}
+  maxTrailLength: 0.25
+  basePrefab: {fileID: 385593219045488564, guid: 98b82e7e5df04c9409c2e10dc847014d,
+    type: 3}
 --- !u!1 &367304667414434268
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,6 +1758,7 @@ GameObject:
   - component: {fileID: 7815695769431073094}
   - component: {fileID: 5430003601710301923}
   - component: {fileID: 8811858832735875253}
+  - component: {fileID: 3583253934671611833}
   m_Layer: 0
   m_Name: B-forearm_R
   m_TagString: Untagged
@@ -1754,6 +1857,22 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &3583253934671611833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367304667414434272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f96ed3063efca848b65cb298bbf6085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bezier: {fileID: 0}
+  maxTrailLength: 0.25
+  basePrefab: {fileID: 385593219045488564, guid: 98b82e7e5df04c9409c2e10dc847014d,
+    type: 3}
 --- !u!1 &367304667414434274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1766,6 +1885,7 @@ GameObject:
   - component: {fileID: 3230723042462524122}
   - component: {fileID: 7579991481440304866}
   - component: {fileID: 126151186161974277}
+  - component: {fileID: 8211085138076946182}
   m_Layer: 0
   m_Name: B-forearm_L
   m_TagString: Untagged
@@ -1864,6 +1984,22 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &8211085138076946182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367304667414434274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f96ed3063efca848b65cb298bbf6085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bezier: {fileID: 0}
+  maxTrailLength: 0.25
+  basePrefab: {fileID: 385593219045488564, guid: 98b82e7e5df04c9409c2e10dc847014d,
+    type: 3}
 --- !u!1 &367304667414434276
 GameObject:
   m_ObjectHideFlags: 0
@@ -2345,6 +2481,7 @@ GameObject:
   - component: {fileID: 3043827714156254323}
   - component: {fileID: 4998057262391231025}
   - component: {fileID: 3410433083005428996}
+  - component: {fileID: 5203334395389989503}
   m_Layer: 0
   m_Name: B-head
   m_TagString: Untagged
@@ -2441,6 +2578,22 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &5203334395389989503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8654250720420973278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f96ed3063efca848b65cb298bbf6085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bezier: {fileID: 0}
+  maxTrailLength: 0.25
+  basePrefab: {fileID: 385593219045488564, guid: 98b82e7e5df04c9409c2e10dc847014d,
+    type: 3}
 --- !u!1 &8654250720420973280
 GameObject:
   m_ObjectHideFlags: 0
@@ -2452,6 +2605,7 @@ GameObject:
   - component: {fileID: 8654250720420943552}
   - component: {fileID: 8811598987084658790}
   - component: {fileID: 8369627062369231530}
+  - component: {fileID: 2748441249801504012}
   m_Layer: 0
   m_Name: B-hips
   m_TagString: Untagged
@@ -2505,6 +2659,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2748441249801504012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8654250720420973280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f96ed3063efca848b65cb298bbf6085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bezier: {fileID: 0}
+  maxTrailLength: 0.25
+  basePrefab: {fileID: 385593219045488564, guid: 98b82e7e5df04c9409c2e10dc847014d,
+    type: 3}
 --- !u!1 &8654250720420973282
 GameObject:
   m_ObjectHideFlags: 0
@@ -2548,6 +2718,7 @@ GameObject:
   - component: {fileID: 2435589723811685348}
   - component: {fileID: 5844898205900591496}
   - component: {fileID: 1806192971304377909}
+  - component: {fileID: 3743156689460976139}
   m_Layer: 0
   m_Name: B-spine
   m_TagString: Untagged
@@ -2645,6 +2816,22 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &3743156689460976139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8654250720420973308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f96ed3063efca848b65cb298bbf6085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bezier: {fileID: 0}
+  maxTrailLength: 0.25
+  basePrefab: {fileID: 385593219045488564, guid: 98b82e7e5df04c9409c2e10dc847014d,
+    type: 3}
 --- !u!1 &8654250720420973334
 GameObject:
   m_ObjectHideFlags: 0

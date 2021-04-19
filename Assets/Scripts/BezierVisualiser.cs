@@ -6,30 +6,16 @@ using UnityEngine;
 public class BezierVisualiser : MonoBehaviour
 {
     [SerializeField]
-    private List<Transform> points;
-    [SerializeField]
     private float width;
     [SerializeField]
     private int tInterval = 10;
-    [SerializeField]
-    private MeshFilter filter;
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireMesh(ConstructSegmentedMesh(points.Select(t => t.position).ToList()));
-    }
-
-    [ContextMenu("ConstructMesh")]
-    public void ConstructMeshOnPoints()
-    {
-        filter.mesh = ConstructSegmentedMesh(points.Select(t => t.position).ToList());
-    }
-
-    private Mesh ConstructSegmentedMesh(List<Vector3> corners)
+    public Mesh ConstructSegmentedMesh(List<Vector3> corners)
     {
         var mesh = new Mesh();
         if (corners.Count < 3)
         {
+            Debug.LogError("Too few corners");
             return mesh;
         }
         var vertices = new List<Vector3>();
