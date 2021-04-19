@@ -15,6 +15,14 @@ public class TaintSource : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out ITaintable taintable))
+        {
+            taintable.Taint(initialIntensity);
+        }
+    }
+
     public void SetIntensity(float intensity)
     {
         initialIntensity = intensity;
