@@ -38,7 +38,7 @@ public class SimpleFPPController : MonoBehaviour
         lookAction.action.performed += Look;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         Move(moveAction.action.ReadValue<Vector2>());
     }
