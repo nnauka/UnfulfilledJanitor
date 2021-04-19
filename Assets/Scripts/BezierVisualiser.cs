@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BezierVisualiser : MonoBehaviour
@@ -13,38 +14,7 @@ public class BezierVisualiser : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        var BezierPoints = new List<Vector3>();
-        var offsetsL = new List<Vector3>();
-        var offsetsR = new List<Vector3>();
-        for (int i = 2; i < points.Count; i++)
-        {
-            BezierPoints = GetQuadraticBezierPoints(points[0].position, points[1].position, points[2].position, 10);
-        }
-        for (int i = 1; i < BezierPoints.Count; i++)
-        {
-            Vector3 direction = (BezierPoints[i] - BezierPoints[i - 1]).normalized;
-            var perp = Vector3.Cross(direction, Vector3.up);
-            perp *= width;
-            offsetsL.Add(BezierPoints[i - 1] + perp);
-            offsetsR.Add(BezierPoints[i - 1] - perp);
-        }
-        for (int i = 1; i < BezierPoints.Count; i++)
-        {
-            //Gizmos.DrawLine(BezierPoints[i - 1], BezierPoints[i]);
-        }
-        for (int i = 0; i < BezierPoints.Count; i++)
-        {
-            if (i < offsetsL.Count)
-            {
-                Gizmos.DrawLine(offsetsL[i], BezierPoints[i]);
-                Gizmos.DrawLine(BezierPoints[i], offsetsR[i]);
-            }
-        }
-        for (int i = 1; i < offsetsL.Count; i++)
-        {
-            Gizmos.DrawLine(offsetsL[i - 1], offsetsL[i]);
-            Gizmos.DrawLine(offsetsR[i - 1], offsetsR[i]);
-        }
+        Gizmos.DrawWireMesh(ConstructSegmentedMesh(points.Select(t => t.position).ToList()));
     }
 
     private Mesh ConstructSegmentedMesh(List<Vector3> corners)
@@ -64,7 +34,7 @@ public class BezierVisualiser : MonoBehaviour
         var offsets = new List<Vector3>();
         for (int i = 1; i < bezierCorners.Count; i++)
         {
-            var direction = (bezierCorners[i-1] - bezierCorners[i]).normalized;
+            var direction = (bezierCorners[i - 1] - bezierCorners[i]).normalized;
             var perp = Vector3.Cross(direction, Vector3.up) * width;
             offsets.Add(perp);
         }
@@ -74,15 +44,17 @@ public class BezierVisualiser : MonoBehaviour
             vertices.Add(bezierCorners[i] - offsets[i]);
             vertices.Add(bezierCorners[i] + offsets[i]);
         }
-        for (int i = 0; i < vertices.Count-2; i++)
+        for (int i = 0; i < vertices.Count - 2; i+=2)
         {
             triangles.Add(i);
-            triangles.Add(i+2);
-            triangles.Add(i+1);
-            triangles.Add(i+2);
-            triangles.Add(i+3);
-            triangles.Add(i+1);
+            triangles.Add(i + 2);
+            triangles.Add(i + 1);
+            triangles.Add(i + 2);
+            triangles.Add(i + 3);
+            triangles.Add(i + 1);
         }
+        mesh.vertices = vertices.ToArray();
+        mesh.triangles = triangles.ToArray();
         mesh.RecalculateNormals();
         return mesh;
     }
