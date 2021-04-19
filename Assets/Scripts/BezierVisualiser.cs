@@ -20,25 +20,30 @@ public class BezierVisualiser : MonoBehaviour
         {
             BezierPoints = GetQuadraticBezierPoints(points[0].position, points[1].position, points[2].position, 10);
         }
-        for (int i = 1; i < points.Count; i++)
+        for (int i = 1; i < BezierPoints.Count; i++)
         {
-            Vector3 direction = (points[i].position - points[i - 1].position).normalized;
+            Vector3 direction = (BezierPoints[i] - BezierPoints[i - 1]).normalized;
             var perp = Vector3.Cross(direction, Vector3.up);
             perp *= width;
-            offsetsL.Add(points[i - 1].position + perp);
-            offsetsR.Add(points[i - 1].position - perp);
+            offsetsL.Add(BezierPoints[i - 1] + perp);
+            offsetsR.Add(BezierPoints[i - 1] - perp);
         }
         for (int i = 1; i < BezierPoints.Count; i++)
         {
             Gizmos.DrawLine(BezierPoints[i - 1], BezierPoints[i]);
         }
-        for (int i = 0; i < points.Count; i++)
+        for (int i = 0; i < BezierPoints.Count; i++)
         {
             if (i < offsetsL.Count)
             {
-                Gizmos.DrawLine(offsetsL[i], points[i].position);
-                Gizmos.DrawLine(points[i].position, offsetsR[i]);
+                Gizmos.DrawLine(offsetsL[i], BezierPoints[i]);
+                Gizmos.DrawLine(BezierPoints[i], offsetsR[i]);
             }
+        }
+        for (int i = 1; i < offsetsL.Count; i++)
+        {
+            Gizmos.DrawLine(offsetsL[i - 1], offsetsL[i]);
+            Gizmos.DrawLine(offsetsR[i - 1], offsetsR[i]);
         }
     }
 
