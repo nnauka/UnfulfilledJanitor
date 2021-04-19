@@ -9,6 +9,8 @@ public class SimpleFPPController : MonoBehaviour
 {
     [SerializeField]
     private float speed = 4f;
+    [SerializeField]
+    private float mouseSens = 0.1f;
     [Header("Constraints")]
     [SerializeField]
     private float minXRotation = -30;
@@ -29,11 +31,8 @@ public class SimpleFPPController : MonoBehaviour
 
     private void Awake()
     {
-#if UNITY_EDITOR
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-#endif
-
         lookAction.action.actionMap.Enable();
         lookAction.action.performed += Look;
     }
@@ -46,7 +45,7 @@ public class SimpleFPPController : MonoBehaviour
             return;
         }
 #endif
-        Move(moveAction.action.ReadValue<Vector2>() * Time.deltaTime);
+        Move(moveAction.action.ReadValue<Vector2>());
     }
 
     private void Move(Vector2 input)
@@ -75,7 +74,7 @@ public class SimpleFPPController : MonoBehaviour
         switch (context.phase)
         {
             case InputActionPhase.Performed:
-                var input = context.ReadValue<Vector2>();
+                var input = context.ReadValue<Vector2>() * mouseSens;
                 RotateCamera(input);
                 break;
             default:
