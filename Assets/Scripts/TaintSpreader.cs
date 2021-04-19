@@ -10,9 +10,16 @@ public class TaintSpreader : MonoBehaviour, ITaintable
     private float taintDistanceInterval = 100f;
     [SerializeField]
     private TaintSource taintObject;
+    [SerializeField]
+    private LayerMask taintRaycastMask;
     private float taintIntensity;
     private float distance;
     private Vector3 prevPosition;
+
+    private void Start()
+    {
+        enabled = false;
+    }
 
     public void Taint(float intensity)
     {
@@ -23,38 +30,27 @@ public class TaintSpreader : MonoBehaviour, ITaintable
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        distance += Vector3.SqrMagnitude(transform.position - prevPosition);
+        distance += Vector3.Magnitude(transform.position - prevPosition);
         prevPosition = transform.position;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        if(collision.collider.TryGetComponent<ITaintable>(out ITaintable taintable) && distance > taintDistanceInterval)
+        if(distance > taintDistanceInterval && Physics.Raycast(transform.position + Vector3.up, Vector3.down, out RaycastHit hit, 4, taintRaycastMask))
         {
-            distance = 0f;
-            LeaveTaint(collision.GetContact(0).point, collision.transform);
-            taintable.Taint(taintIntensity);
-            taintIntensity -= intensityReduction;
-            enabled = taintIntensity > float.Epsilon;
+            // Don't spread taint on taint...
+            if (!hit.transform.TryGetComponent(out TaintSource source))
+            {
+                distance = 0f;
+                LeaveTaint(hit.point, hit.transform);
+                taintIntensity -= intensityReduction;
+                enabled = taintIntensity > float.Epsilon; 
+            }
         }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        
     }
 
     protected virtual void LeaveTaint(Vector3 position, Transform taintedObject)
     {
         var taint = Instantiate(taintObject, taintedObject, true);
         taint.SetIntensity(taintIntensity);
-        taint.transform.position = position;
+        taint.transform.position = position + Vector3.up * 0.01f;
     }
 }
