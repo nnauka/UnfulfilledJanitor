@@ -29,31 +29,35 @@ public class TrailSpreader : MonoBehaviour, ITaintable
     {
         var currentPosition = transform.position;
         distance += Vector3.SqrMagnitude(currentPosition - prevPosition);
-        if(distance > maxTrailLength)
+        if (distance > maxTrailLength)
         {
-            currentTrailCorners.Add(currentPosition);
+            currentTrailCorners.Add(currentCollider.ClosestPointOnBounds(currentPosition));
         }
         prevPosition = currentPosition;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.TryGetComponent(out ITaintable taintable) && collision.contactCount > 0)
+        if (collision.transform.TryGetComponent(out ITaintable taintable) && collision.transform.CompareTag("Ground"))
         {
-            Debug.LogError("Contact");
             enabled = true;
             currentTrailCorners.Add(collision.GetContact(0).point); 
         }
     }
 
-
+    private void OnCollisionStay(Collision collision)
+    {
+        //if(collision.transform.TryGetComponent(out ITaintable taintable) && collision.transform.CompareTag("Ground"))
+        //{
+        //    currentTrailCorners.Add(collision.GetContact(0).point);
+        //}
+    }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.transform.TryGetComponent(out ITaintable taintable) && collision.transform.root != transform.root)
+        if (collision.transform.TryGetComponent(out ITaintable taintable) && collision.transform.CompareTag("Ground"))
         {
             enabled = false;
-            currentTrailCorners.Add(transform.position);
             LeaveTaint(transform.position, collision.transform);
             currentTrailCorners.Clear();
         }
@@ -69,7 +73,7 @@ public class TrailSpreader : MonoBehaviour, ITaintable
 
     public void AlignWithSurfaceBelow(Transform item)
     {
-        if (Physics.Raycast(item.position, Vector3.down, out RaycastHit hit, 2))
+        if (Physics.Raycast(item.position + Vector3.up, Vector3.down, out RaycastHit hit, 4))
         {
             item.rotation = Quaternion.FromToRotation(item.up, hit.normal) * item.rotation;
             item.position = hit.point;
