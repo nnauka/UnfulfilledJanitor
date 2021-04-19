@@ -38,24 +38,17 @@ public class TrailSpreader : MonoBehaviour, ITaintable
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.TryGetComponent(out ITaintable taintable) && collision.transform.CompareTag("Ground"))
+        if (collision.transform.TryGetComponent(out ITaintable taintable) && collision.transform.CompareTag("Ground") && intenisty > float.Epsilon)
         {
+            currentCollider = collision.collider;
             enabled = true;
             currentTrailCorners.Add(collision.GetContact(0).point); 
         }
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        //if(collision.transform.TryGetComponent(out ITaintable taintable) && collision.transform.CompareTag("Ground"))
-        //{
-        //    currentTrailCorners.Add(collision.GetContact(0).point);
-        //}
-    }
-
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.transform.TryGetComponent(out ITaintable taintable) && collision.transform.CompareTag("Ground"))
+        if (collision.transform.TryGetComponent(out ITaintable taintable) && collision.transform.CompareTag("Ground") && enabled)
         {
             enabled = false;
             LeaveTaint(transform.position, collision.transform);
@@ -65,9 +58,14 @@ public class TrailSpreader : MonoBehaviour, ITaintable
 
     public void LeaveTaint(Vector3 position, Transform taintedObject)
     {
-        Debug.LogError("Leave Taint");
         var filter = Instantiate(basePrefab, taintedObject, true);
         filter.mesh = bezier.ConstructSegmentedMesh(currentTrailCorners);
+        var renderer = filter.GetComponent<Renderer>();
+        var colour = renderer.sharedMaterial.color;
+        colour.a = intenisty;
+        renderer.material.color = colour;
+        intenisty -= 0.1f;
+        distance = 0;
         AlignWithSurfaceBelow(filter.transform);
     }
 
