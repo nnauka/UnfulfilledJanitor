@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3543633253590490327}
   - component: {fileID: 7939820095644057810}
   m_Layer: 0
-  m_Name: blood7 1
+  m_Name: bloodFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialIntensity: 1
+  renderer: {fileID: 2300000}
 --- !u!64 &7939820095644057810
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -104,9 +105,9 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100000}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}

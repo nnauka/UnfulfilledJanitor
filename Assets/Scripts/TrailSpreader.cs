@@ -13,8 +13,12 @@ public class TrailSpreader : MonoBehaviour, ITaintable
     private float maxTrailLength;
     [SerializeField]
     private MeshFilter basePrefab;
+    [SerializeField]
+    private int segmentsPerPool = 4;
+
 
     private Collider currentCollider;
+    private int currentIndex;
     private float distance;
     private float intenisty;
     private Vector3 prevPosition;
@@ -27,13 +31,23 @@ public class TrailSpreader : MonoBehaviour, ITaintable
 
     private void FixedUpdate()
     {
-        var currentPosition = transform.position;
-        distance += Vector3.SqrMagnitude(currentPosition - prevPosition);
-        if (distance > maxTrailLength)
+        if (intenisty > float.Epsilon)
         {
-            currentTrailCorners.Add(currentCollider.ClosestPointOnBounds(currentPosition));
+            var currentPosition = transform.position;
+            distance += Vector3.Magnitude(currentPosition - prevPosition);
+            if (distance > maxTrailLength / 4)
+            {
+                currentTrailCorners.Add(currentCollider.ClosestPointOnBounds(currentPosition));
+                currentIndex++;
+            }
+            if (currentIndex >= segmentsPerPool)
+            {
+                currentIndex = 0;
+                LeaveTaint(transform.position, currentCollider.transform);
+                currentTrailCorners.RemoveRange(1, currentTrailCorners.Count - 1);
+            }
+            prevPosition = currentPosition;
         }
-        prevPosition = currentPosition;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -42,7 +56,7 @@ public class TrailSpreader : MonoBehaviour, ITaintable
         {
             currentCollider = collision.collider;
             enabled = true;
-            currentTrailCorners.Add(collision.GetContact(0).point); 
+            currentTrailCorners.Add(collision.GetContact(0).point);
         }
     }
 
@@ -74,8 +88,7 @@ public class TrailSpreader : MonoBehaviour, ITaintable
         if (Physics.Raycast(item.position + Vector3.up, Vector3.down, out RaycastHit hit, 4))
         {
             item.rotation = Quaternion.FromToRotation(item.up, hit.normal) * item.rotation;
-            item.position = hit.point;
-            item.position += new Vector3(0, ZFightPreventionOffset, 0);
+            item.position = hit.point + (ZFightPreventionOffset * Vector3.up);
         }
     }
 

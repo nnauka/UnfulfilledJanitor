@@ -23,7 +23,6 @@ public class TaintSpreader : MonoBehaviour, ITaintable
 
     public void Taint(float intensity)
     {
-        Debug.LogError("Spreader Tainted", this);
         if (intensity > taintIntensity)
         {
             taintIntensity = intensity;
@@ -31,16 +30,20 @@ public class TaintSpreader : MonoBehaviour, ITaintable
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        distance += Vector3.SqrMagnitude(transform.position - prevPosition);
+        distance += Vector3.Magnitude(transform.position - prevPosition);
         prevPosition = transform.position;
         if(distance > taintDistanceInterval && Physics.Raycast(transform.position + Vector3.up, Vector3.down, out RaycastHit hit, 4, taintRaycastMask))
         {
-            distance = 0f;
-            LeaveTaint(hit.point, hit.transform);
-            taintIntensity -= intensityReduction;
-            enabled = taintIntensity > float.Epsilon;
+            // Don't spread taint on taint...
+            if (!hit.transform.TryGetComponent(out TaintSource source))
+            {
+                distance = 0f;
+                LeaveTaint(hit.point, hit.transform);
+                taintIntensity -= intensityReduction;
+                enabled = taintIntensity > float.Epsilon; 
+            }
         }
     }
 
@@ -48,6 +51,6 @@ public class TaintSpreader : MonoBehaviour, ITaintable
     {
         var taint = Instantiate(taintObject, taintedObject, true);
         taint.SetIntensity(taintIntensity);
-        taint.transform.position = position;
+        taint.transform.position = position + Vector3.up * 0.01f;
     }
 }

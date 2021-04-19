@@ -236,6 +236,11 @@ PrefabInstance:
       propertyPath: bezier
       value: 
       objectReference: {fileID: 2091387068}
+    - target: {fileID: 82657486841476982, guid: 34115fd4eff069845a47d22ce756724e,
+        type: 3}
+      propertyPath: maxTrailLength
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 126151186161974277, guid: 34115fd4eff069845a47d22ce756724e,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -286,6 +291,11 @@ PrefabInstance:
       propertyPath: bezier
       value: 
       objectReference: {fileID: 2091387068}
+    - target: {fileID: 2099114858832046528, guid: 34115fd4eff069845a47d22ce756724e,
+        type: 3}
+      propertyPath: maxTrailLength
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2101468930984345044, guid: 34115fd4eff069845a47d22ce756724e,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -301,11 +311,21 @@ PrefabInstance:
       propertyPath: bezier
       value: 
       objectReference: {fileID: 2091387068}
+    - target: {fileID: 2748441249801504012, guid: 34115fd4eff069845a47d22ce756724e,
+        type: 3}
+      propertyPath: maxTrailLength
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3312955362941757265, guid: 34115fd4eff069845a47d22ce756724e,
         type: 3}
       propertyPath: bezier
       value: 
       objectReference: {fileID: 2091387068}
+    - target: {fileID: 3312955362941757265, guid: 34115fd4eff069845a47d22ce756724e,
+        type: 3}
+      propertyPath: maxTrailLength
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3410433083005428996, guid: 34115fd4eff069845a47d22ce756724e,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
@@ -316,6 +336,11 @@ PrefabInstance:
       propertyPath: bezier
       value: 
       objectReference: {fileID: 2091387068}
+    - target: {fileID: 3583253934671611833, guid: 34115fd4eff069845a47d22ce756724e,
+        type: 3}
+      propertyPath: maxTrailLength
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3600804741442751361, guid: 34115fd4eff069845a47d22ce756724e,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -331,26 +356,51 @@ PrefabInstance:
       propertyPath: bezier
       value: 
       objectReference: {fileID: 2091387068}
+    - target: {fileID: 3743156689460976139, guid: 34115fd4eff069845a47d22ce756724e,
+        type: 3}
+      propertyPath: maxTrailLength
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5203334395389989503, guid: 34115fd4eff069845a47d22ce756724e,
+        type: 3}
+      propertyPath: bezier
+      value: 
+      objectReference: {fileID: 2091387068}
+    - target: {fileID: 5203334395389989503, guid: 34115fd4eff069845a47d22ce756724e,
+        type: 3}
+      propertyPath: maxTrailLength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616254811072190665, guid: 34115fd4eff069845a47d22ce756724e,
         type: 3}
       propertyPath: bezier
       value: 
       objectReference: {fileID: 2091387068}
     - target: {fileID: 5616254811072190665, guid: 34115fd4eff069845a47d22ce756724e,
         type: 3}
+      propertyPath: maxTrailLength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787909755333876218, guid: 34115fd4eff069845a47d22ce756724e,
+        type: 3}
       propertyPath: bezier
       value: 
       objectReference: {fileID: 2091387068}
     - target: {fileID: 5787909755333876218, guid: 34115fd4eff069845a47d22ce756724e,
+        type: 3}
+      propertyPath: maxTrailLength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727244959155441464, guid: 34115fd4eff069845a47d22ce756724e,
         type: 3}
       propertyPath: bezier
       value: 
       objectReference: {fileID: 2091387068}
     - target: {fileID: 6727244959155441464, guid: 34115fd4eff069845a47d22ce756724e,
         type: 3}
-      propertyPath: bezier
-      value: 
-      objectReference: {fileID: 2091387068}
+      propertyPath: maxTrailLength
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6888522347093026525, guid: 34115fd4eff069845a47d22ce756724e,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -381,6 +431,11 @@ PrefabInstance:
       propertyPath: bezier
       value: 
       objectReference: {fileID: 2091387068}
+    - target: {fileID: 8211085138076946182, guid: 34115fd4eff069845a47d22ce756724e,
+        type: 3}
+      propertyPath: maxTrailLength
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8654250720420943610, guid: 34115fd4eff069845a47d22ce756724e,
         type: 3}
       propertyPath: m_RootOrder
@@ -1013,6 +1068,7 @@ MonoBehaviour:
   bezier: {fileID: 0}
   maxTrailLength: 0
   basePrefab: {fileID: 0}
+  segmentsPerPool: 4
 --- !u!23 &716335092
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1723,7 +1779,7 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 831826067, guid: caf144957f7de434fad808f92877173a, type: 3}
       propertyPath: taintDistanceInterval
-      value: 15
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 831826067, guid: caf144957f7de434fad808f92877173a, type: 3}
       propertyPath: taintRaycastMask.m_Bits
