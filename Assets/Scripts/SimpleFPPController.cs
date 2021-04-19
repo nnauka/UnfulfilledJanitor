@@ -40,7 +40,13 @@ public class SimpleFPPController : MonoBehaviour
 
     private void Update()
     {
-        Move(moveAction.action.ReadValue<Vector2>());
+#if UNITY_EDITOR
+        if (Cursor.visible)
+        {
+            return;
+        }
+#endif
+        Move(moveAction.action.ReadValue<Vector2>() * Time.deltaTime);
     }
 
     private void Move(Vector2 input)
@@ -52,7 +58,6 @@ public class SimpleFPPController : MonoBehaviour
 
     public void RotateCamera(Vector2 input)
     {
-        input *= 0.1f;
         cam.transform.Rotate(-input.y, 0, 0, Space.Self);
         charControl.transform.Rotate(0, input.x, 0, Space.Self);
         var currentRot = cam.transform.rotation;
@@ -79,12 +84,10 @@ public class SimpleFPPController : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    [SerializeField]
-    private float distance = 5f;
 
     private void OnDrawGizmos()
     {
-        Debug.DrawLine(cam.transform.position, transform.forward * distance + transform.position, Color.red);
+        Debug.DrawLine(cam.transform.position, transform.forward * 5f + transform.position, Color.red);
     }
 #endif
 }

@@ -37,14 +37,4 @@ public class ObjectHighlighter : MonoBehaviour
             OnObjectHighlight?.Invoke(highlightedObject);
         }
     }
-
-    private Transform LookForObject()
-    {
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, range, mask))
-        {
-            highlightedObjectHitInfo = hit;
-            return hit.transform;
-        }
-        return null;
-    }
 }

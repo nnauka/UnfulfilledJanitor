@@ -29,7 +29,6 @@ public class PBGrabber : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Vector3 force = grabbedRb.position - (Vector3.Scale(transform.forward, initialDistance)) * strength;
         Vector3 force = transform.forward * initialDistance + transform.position - grabbedRb.position;
         grabbedRb.AddForce(force * strength);
     }
@@ -49,7 +48,6 @@ public class PBGrabber : MonoBehaviour
                 }
                 break;
             default:
-                Debug.LogError($"Input Action {context.phase}");
                 break;
         }
     }
