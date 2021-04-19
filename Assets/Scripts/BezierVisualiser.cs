@@ -15,7 +15,6 @@ public class BezierVisualiser : MonoBehaviour
         var mesh = new Mesh();
         if (corners.Count < 3)
         {
-            Debug.LogError("Too few corners");
             return mesh;
         }
         var vertices = new List<Vector3>();
