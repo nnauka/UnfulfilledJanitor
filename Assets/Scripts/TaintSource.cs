@@ -11,7 +11,6 @@ public class TaintSource : MonoBehaviour
     {
         if(collision.collider.TryGetComponent(out ITaintable taintable))
         {
-            Debug.LogError("Taint");
             taintable.Taint(initialIntensity);
         }
     }

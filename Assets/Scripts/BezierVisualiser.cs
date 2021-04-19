@@ -10,11 +10,19 @@ public class BezierVisualiser : MonoBehaviour
     [SerializeField]
     private float width;
     [SerializeField]
-    private float tInterval = 0.1f;
+    private int tInterval = 10;
+    [SerializeField]
+    private MeshFilter filter;
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireMesh(ConstructSegmentedMesh(points.Select(t => t.position).ToList()));
+    }
+
+    [ContextMenu("ConstructMesh")]
+    public void ConstructMeshOnPoints()
+    {
+        filter.mesh = ConstructSegmentedMesh(points.Select(t => t.position).ToList());
     }
 
     private Mesh ConstructSegmentedMesh(List<Vector3> corners)
@@ -29,7 +37,7 @@ public class BezierVisualiser : MonoBehaviour
         var bezierCorners = new List<Vector3>();
         for (int i = 2; i < corners.Count; i += 2)
         {
-            bezierCorners.AddRange(GetQuadraticBezierPoints(corners[0], corners[1], corners[2], 10));
+            bezierCorners.AddRange(GetQuadraticBezierPoints(corners[i - 2], corners[i - 1], corners[i], tInterval));
         }
         var offsets = new List<Vector3>();
         for (int i = 1; i < bezierCorners.Count; i++)
@@ -38,13 +46,17 @@ public class BezierVisualiser : MonoBehaviour
             var perp = Vector3.Cross(direction, Vector3.up) * width;
             offsets.Add(perp);
         }
-        offsets.Add(Vector3.Cross((bezierCorners[bezierCorners.Count - 1] - bezierCorners[bezierCorners.Count - 2]).normalized, Vector3.up) * width);
+        offsets.Add(Vector3.Cross((bezierCorners[bezierCorners.Count - 2] - bezierCorners[bezierCorners.Count - 1]).normalized, Vector3.up) * width);
         for (int i = 0; i < bezierCorners.Count; i++)
         {
+            if(bezierCorners[i] == bezierCorners[i] - offsets[i])
+            {
+                continue;
+            }
             vertices.Add(bezierCorners[i] - offsets[i]);
             vertices.Add(bezierCorners[i] + offsets[i]);
         }
-        for (int i = 0; i < vertices.Count - 2; i+=2)
+        for (int i = 0; i < vertices.Count - 2; i += 2)
         {
             triangles.Add(i);
             triangles.Add(i + 2);
@@ -63,14 +75,13 @@ public class BezierVisualiser : MonoBehaviour
     {
         t = Mathf.Clamp01(t);
         float oneMinusT = 1f - t;
-        return //Quadratic formula =>  B(t) = (1 - t)^2 P0 + 2 (1 - t) t P1 + t^2 P2
-            oneMinusT * oneMinusT * p0 + 2f * oneMinusT * t * p1 + t * t * p2;
+        return oneMinusT * oneMinusT * p0 + 2f * oneMinusT * t * p1 + t * t * p2;
     }
 
     public static List<Vector3> GetQuadraticBezierPoints(Vector3 p0, Vector3 p1, Vector3 p2, int count)
     {
         var points = new List<Vector3>();
-        float interval = 1f / (count - 1);
+        float interval = 1f / (count);
         float t = 0;
         for (int i = 0; i < count + 1; i++)
         {
